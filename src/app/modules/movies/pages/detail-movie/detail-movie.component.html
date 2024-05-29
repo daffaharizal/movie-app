@@ -1,4 +1,6 @@
-<div class="h-screen w-screen p-12">
+<div class="flex flex-col gap-3 h-screen w-screen py-8 px-12">
+    <app-breadcrumb [namePreviousPage]="'Home'" [nameCurrentPage]="data?.title" />
+    
   <div
     class="flex flex-col md:flex-row gap-3 w-full h-full bg-white shadow-2xl rounded-xl px-10 py-14 overflow-auto"
   >
@@ -15,7 +17,7 @@
     </div>
     <div class="md:w-1/2 flex flex-col gap-3">
       <h2 class="text-4xl font-extrabold">{{ data?.title }}</h2>
-      <h5 class="text-xl font-semibold italic">"{{ data?.tagline }}"</h5>
+      <span *ngIf="data?.tagline" class="text-xl font-semibold italic">"{{ data?.tagline }}"</span>
       <div class="flex gap-2 flex-wrap">
         <span
           *ngFor="let item of data?.genres"
