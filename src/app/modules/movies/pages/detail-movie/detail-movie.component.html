@@ -1,0 +1,46 @@
+<div class="h-screen w-screen p-12">
+  <div
+    class="flex flex-col md:flex-row gap-3 w-full h-full bg-white shadow-2xl rounded-xl px-10 py-14 overflow-auto"
+  >
+    <div
+      class="md:w-1/2 flex justify-start md:justify-end items-center md:pr-3"
+    >
+      <div class="w-[50%] md:w-[80%] lg:h-[100%] lg:w-[60%]">
+        <img
+          class="cursor-pointer rounded-lg md:rounded-md md:h-full hover:shadow-lg hover:-translate-x-1 hover:-translate-y-1 duration-1000"
+          [src]="'https://image.tmdb.org/t/p/w500' + data.poster_path"
+          (click)="toHomepage(data?.homepage)"
+        />
+      </div>
+    </div>
+    <div class="md:w-1/2 flex flex-col gap-3">
+      <h2 class="text-4xl font-extrabold">{{ data?.title }}</h2>
+      <h5 class="text-xl font-semibold italic">"{{ data?.tagline }}"</h5>
+      <div class="flex gap-2 flex-wrap">
+        <span
+          *ngFor="let item of data?.genres"
+          class="text-sm px-2 py-1 bg-blue-200 text-blue-800 rounded-md"
+          >{{ item?.name }}</span
+        >
+      </div>
+      <p class="text-gray-800 text-base">{{ data?.overview }}</p>
+      <p class="text-gray-600">
+        <strong>Duration:</strong> {{ data?.runtime }} minutes
+      </p>
+      <p class="text-gray-600">
+        <strong>Popularity:</strong> {{ data?.popularity }} viewers
+      </p>
+      <div class="flex gap-2 flex-wrap">
+        <span
+          class="text-sm px-2 py-1 bg-green-200 text-green-800 rounded-md"
+          >{{ data?.status }} - {{ data?.release_date | date: 'EEEE, dd MMMM YYYY' }}</span 
+        >
+      </div>
+      <p class="text-gray-600 flex items-center gap-2">
+        <img class="w-5 mb-[2px]" src="/assets/icons/fav.svg" alt="" />
+        <strong>Rating</strong>{{ data?.vote_average }} / 10 from
+        {{ data.vote_count }} votes
+      </p>
+    </div>
+  </div>
+</div>
