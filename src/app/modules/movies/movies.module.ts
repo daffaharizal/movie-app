@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MoviesRoutingModule } from './movies-routing.module';
 import { MoviesComponent } from './pages/movies.component';
 import { DetailMovieComponent } from './pages/detail-movie/detail-movie.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { DetailMovieComponent } from './pages/detail-movie/detail-movie.componen
   ],
   imports: [
     CommonModule,
-    MoviesRoutingModule
+    MoviesRoutingModule,
+    MatTooltipModule
   ]
 })
 export class MoviesModule { }

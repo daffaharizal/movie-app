@@ -1,26 +1,34 @@
 <div class="flex flex-wrap justify-center w-full gap-6 mt-4">
   <div
-    class="flex flex-col gap-3 cursor-pointer bg-white rounded-lg p-10 w-[calc(100%_-_2rem)] md:w-[calc(50%_-_2rem)] xl:w-[calc(25%_-_2rem)] h-[600px] transition-transform duration-300 hover:shadow-xl hover:-translate-y-1 hover:-translate-x-1"
-    (click)="toDetail(data.id)"
+    class="flex flex-col gap-3 bg-white rounded-lg p-10 w-[calc(100%_-_2rem)] md:w-[calc(50%_-_2rem)] lg:w-[calc(25%_-_2rem)] h-[600px] transition-transform duration-300 hover:shadow-xl hover:-translate-y-1 hover:-translate-x-1"
     *ngFor="let data of movieList; let index = index"
   >
-    <h1 class="flex items-center h-[15%] text-3xl font-extrabold break-words">
+    <h1 class="flex items-center h-[10%] md:h-[15%] text-xl lg:text-3xl font-extrabold break-words">
       {{ data.title }}
     </h1>
-    <p class="h-[19%] overflow-hidden overflow-ellipsis">
+    <p class="h-[19%] md:h-[30%] lg:h-[50%] text-sm lg:text-base overflow-hidden overflow-ellipsis">
       {{ data.overview }}
     </p>
     <img
-      class="rounded-lg md:rounded-md"
+      class="w-[40%] lg:w-[80%] rounded-lg md:rounded-md"
       [src]="'https://image.tmdb.org/t/p/w500' + data.poster_path"
     />
-    <img
-      *ngIf="isInFavorites(data); else NoFav"
-      class="w-8 cursor-pointer"
-      src="/assets/icons/fav.svg"
-      alt=""
-      (click)="deleteFav(data)"
-    />
+    <div class="flex gap-2 items-center">
+      <img
+        *ngIf="isInFavorites(data); else NoFav"
+        class="w-6 lg:w-8 cursor-pointer"
+        src="/assets/icons/fav.svg"
+        alt=""
+        (click)="deleteFav(data)"
+        [matTooltip]="'Add to Favorites'" [matTooltipPosition]="'after'"
+      />
+      <img
+        class="w-6 lg:w-8 cursor-pointer"
+        src="/assets/icons/detail.svg"
+        alt="To detail"
+        (click)="toDetail(data)"
+      />
+    </div>
     <ng-template #NoFav>
       <img
         (click)="addToFavorites(data)"

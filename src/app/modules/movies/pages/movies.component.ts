@@ -14,7 +14,7 @@ export class MoviesComponent {
 
   allMoviesList: Movie[] = [];
   movieList: Movie[] = [];
-  favoritesMovies: any = [];
+  favoritesMovies: Movie[] = [];
 
   ngOnInit() {
     this.masterService.getData().subscribe({
@@ -61,7 +61,7 @@ export class MoviesComponent {
     this.ngOnInit();
   }
 
-  toDetail(id: string) {
-    this.router.navigate([`/${id}`]);
+  toDetail(data: Movie) {
+    this.router.navigate([`/${data.id}`]);
   }
 }
