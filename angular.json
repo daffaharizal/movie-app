@@ -33,7 +33,8 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "buildOptimizer": true
           },
           "configurations": {
             "production": {
@@ -49,7 +50,12 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "fileReplacements": [
+                {
+                  "replace": "./environment/environment.dev.ts",
+                  "with": "./environment/environment.prod.ts"
+                }
+              ]
             },
             "development": {
               "buildOptimizer": false,
@@ -57,7 +63,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "./environment/environment.prod.ts",
+                  "with": "./environment/environment.dev.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -103,6 +115,9 @@
     }
   },
   "cli": {
-    "analytics": "362e6499-e1c9-42cc-a0c4-cfc2880e9841"
+    "analytics": "362e6499-e1c9-42cc-a0c4-cfc2880e9841",
+    "cache": {
+      "enabled": false
+    }
   }
 }
