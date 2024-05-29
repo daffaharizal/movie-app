@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.scss']
 })
 export class BreadcrumbComponent {
   @Input({ required: true }) namePreviousPage!: string;
