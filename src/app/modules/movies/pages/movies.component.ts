@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { Movie, MovieList } from 'src/app/core/models/movie.model';
 import { MasterService } from 'src/app/core/services/master.service';
 
 @Component({
@@ -11,13 +12,13 @@ export class MoviesComponent {
   private masterService = inject(MasterService);
   private router = inject(Router);
 
-  allMoviesList = [];
-  movieList: any = [];
+  allMoviesList: Movie[] = [];
+  movieList: Movie[] = [];
   favoritesMovies: any = [];
 
   ngOnInit() {
     this.masterService.getData().subscribe({
-      next: (res: any) => {
+      next: (res: MovieList) => {
         this.allMoviesList = res?.results;
         
         if(localStorage.getItem('favorites')) {
@@ -39,18 +40,18 @@ export class MoviesComponent {
     });
   }
 
-  isInFavorites(data: any): boolean {
+  isInFavorites(data: Movie): boolean {
     return this.favoritesMovies.some((fav: any) => fav.id === data.id);
   }
 
-  addToFavorites(data: any) {
+  addToFavorites(data: Movie) {
     this.favoritesMovies.unshift(data);
     localStorage.setItem('favorites', JSON.stringify(this.favoritesMovies));
 
     this.ngOnInit();
   }
 
-  deleteFav(data: any) {
+  deleteFav(data: Movie) {
     this.favoritesMovies = JSON.parse(localStorage.getItem('favorites'));
     this.favoritesMovies = this.favoritesMovies.filter((item: any) => {
       return item.id != data.id
