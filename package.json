@@ -9,7 +9,8 @@
     "test": "ng test",
     "check": "prettier --check .",
     "format": "prettier --write .",
-    "lint": "npm-run-all check format"
+    "lint": "eslint src --ext .ts,.html",
+    "lint:fix": "eslint . --ext .ts,.html --fix"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +30,9 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.12",
+    "@angular-eslint/eslint-plugin": "^18.0.0",
+    "@angular-eslint/eslint-plugin-template": "^18.0.0",
+    "@angular-eslint/template-parser": "^18.0.0",
     "@angular/cli": "^16.2.12",
     "@angular/compiler-cli": "^16.2.0",
     "@types/jasmine": "~4.3.0",
