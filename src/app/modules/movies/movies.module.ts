@@ -7,17 +7,13 @@ import { DetailMovieComponent } from './pages/detail-movie/detail-movie.componen
 import { TranslateModule } from '@ngx-translate/core';
 import { BreadcrumbComponent } from 'src/app/shared/breadcrumb/breadcrumb.component';
 
-
 @NgModule({
-  declarations: [
-    MoviesComponent,
-    DetailMovieComponent
-  ],
+  declarations: [MoviesComponent, DetailMovieComponent],
   imports: [
     CommonModule,
     MoviesRoutingModule,
     TranslateModule,
-    BreadcrumbComponent
-  ]
+    BreadcrumbComponent,
+  ],
 })
-export class MoviesModule { }
+export class MoviesModule {}

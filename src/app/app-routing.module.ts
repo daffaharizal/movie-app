@@ -9,14 +9,15 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./modules/movies/movies.module').then(m => m.MoviesModule)
-      }
+        loadChildren: () =>
+          import('./modules/movies/movies.module').then(m => m.MoviesModule),
+      },
     ],
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

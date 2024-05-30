@@ -37,8 +37,8 @@ export class MoviesComponent {
         // for check if movies are available in the local storage of user
         if (localStorage.getItem('favorites')) {
           this.favoritesMovies = JSON.parse(localStorage.getItem('favorites'));
-          this.allMoviesList = this.allMoviesList.filter((item) => {
-            return !this.favoritesMovies.some((fav) => {
+          this.allMoviesList = this.allMoviesList.filter(item => {
+            return !this.favoritesMovies.some(fav => {
               return item.id === fav.id;
             });
           });
@@ -70,7 +70,7 @@ export class MoviesComponent {
   }
 
   isInFavorites(data: Movie): boolean {
-    return this.favoritesMovies.some((fav) => fav.id === data.id);
+    return this.favoritesMovies.some(fav => fav.id === data.id);
   }
 
   addToFavorites(data: Movie) {
@@ -82,7 +82,7 @@ export class MoviesComponent {
 
   deleteFav(data: Movie) {
     this.favoritesMovies = JSON.parse(localStorage.getItem('favorites'));
-    this.favoritesMovies = this.favoritesMovies.filter((item) => {
+    this.favoritesMovies = this.favoritesMovies.filter(item => {
       return item.id != data.id;
     });
     localStorage.setItem('favorites', JSON.stringify(this.favoritesMovies));

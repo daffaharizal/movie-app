@@ -13,7 +13,7 @@ export class BreadcrumbComponent {
   @Input({ required: true }) nameCurrentPage!: string;
 
   private router = inject(Router);
-  
+
   previousPage() {
     this.router.navigate(['/']);
   }

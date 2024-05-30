@@ -1,3 +1,3 @@
 export const environment = {
-    API_URL : 'https://api.themoviedb.org',
-}
+  API_URL: 'https://api.themoviedb.org',
+};
