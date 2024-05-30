@@ -8,10 +8,10 @@ import { MasterService } from 'src/app/core/services/master.service';
   templateUrl: './detail-movie.component.html',
 })
 export class DetailMovieComponent {
+  // create services variable
   private masterService = inject(MasterService);
   private route = inject(ActivatedRoute);
 
-  movieDetailList: any;
   id: string;
   data: DetailMovieList;
 
@@ -26,7 +26,7 @@ export class DetailMovieComponent {
     });
   }
 
-  toHomepage(link: any) {
+  toHomepage(link: string): void {
     window.location.href = link;
   }
 }

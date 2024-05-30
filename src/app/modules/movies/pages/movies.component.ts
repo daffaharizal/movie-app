@@ -10,8 +10,10 @@ import { MasterService } from 'src/app/core/services/master.service';
   styleUrls: ['./movies.component.scss'],
 })
 export class MoviesComponent {
+  // create services variable
   private masterService = inject(MasterService);
   private router = inject(Router);
+  private translate = inject(TranslateService);
 
   allMoviesList: Movie[] = [];
   movieList: Movie[] = [];
@@ -22,9 +24,9 @@ export class MoviesComponent {
   sectionList: string[] = ['All Movies', 'Favorites'];
   selectedSection: string = this.sectionList[0];
 
-  constructor(private translate: TranslateService) {
-    translate.setDefaultLang('en');
-    translate.use('en');
+  constructor() {
+    this.translate.setDefaultLang('en');
+    this.translate.use('en');
   }
 
   ngOnInit() {
@@ -32,6 +34,7 @@ export class MoviesComponent {
       next: (res: MovieList) => {
         this.allMoviesList = res?.results;
 
+        // for check if movies are available in the local storage of user
         if (localStorage.getItem('favorites')) {
           this.favoritesMovies = JSON.parse(localStorage.getItem('favorites'));
           this.allMoviesList = this.allMoviesList.filter((item) => {
@@ -45,12 +48,14 @@ export class MoviesComponent {
           this.movieList = this.allMoviesList;
         }
 
+        // call the function to get the movies final data
         this.loadMore();
       },
     });
   }
 
-  changeSection(item: any, index?: number) {
+  // Change section all movies or favorites
+  changeSection(item: string, index?: number) {
     this.selectedSection = this.sectionList[index];
     if (item == 'All Movies') {
       this.ngOnInit();
@@ -65,7 +70,7 @@ export class MoviesComponent {
   }
 
   isInFavorites(data: Movie): boolean {
-    return this.favoritesMovies.some((fav: any) => fav.id === data.id);
+    return this.favoritesMovies.some((fav) => fav.id === data.id);
   }
 
   addToFavorites(data: Movie) {
@@ -77,7 +82,7 @@ export class MoviesComponent {
 
   deleteFav(data: Movie) {
     this.favoritesMovies = JSON.parse(localStorage.getItem('favorites'));
-    this.favoritesMovies = this.favoritesMovies.filter((item: any) => {
+    this.favoritesMovies = this.favoritesMovies.filter((item) => {
       return item.id != data.id;
     });
     localStorage.setItem('favorites', JSON.stringify(this.favoritesMovies));
