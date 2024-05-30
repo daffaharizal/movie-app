@@ -1,27 +1,34 @@
-# TestSimpli
+# Movie App - Documentation
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
+This project was generated with `Angular CLI` version 16.2.12.
 
-## Development server
+## Themoviedb Account - API Reference
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+`Username`: daffaharizal
 
-## Code scaffolding
+`Password`: ronaldo46
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Note: I quite often experience bugs using the Public API, especially images, with the same URL path when accessing them, but sometimes the image doesn't appear, but at other times it does, this is quite strange hehehe. Hopefully this issue will soon be resolved for the owners and managers of the public fire service :)
+
+## Run Project
+
+`Development`: _ng serve --port 3000_
+
+`Production`: _ng serve -c=production_
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+`Development`: _ng build_
 
-## Running unit tests
+`Production`: _ng build -c=production_
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Features App
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Of course, work on the mandatory points or criteria as closely as possible
+2. Support multiple language
+3. Infinite scrolling
+4. Reusable components `(Breadcrumb)` but in this case, I only implemented it on 1 component because there is no need to implement it on other components.
+5. Clean code (Although perhaps not perfect)
+6. Using ESLint and Prettier
+7. Disable cachine angular
+8. Replace environment
